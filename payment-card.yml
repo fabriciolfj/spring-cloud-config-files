@@ -38,3 +38,6 @@ management:
 
 key:
   value: test
+
+topic:
+  process-fraud: process-fraud
