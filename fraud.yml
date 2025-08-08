@@ -21,7 +21,7 @@ spring:
       - localhost:29094
   cloud:
     function:
-      definition: Hours|Amount
+      definition: hours|amount
     streams:
       binder:
         transaction:
@@ -32,14 +32,14 @@ spring:
           acks: all
           processing.guarantee: exactly_once
       bindings:
-        processFraudHours-in-0:
+        processFraudhours-in-0:
           destination: process-fraud
           group: ${spring.application.name}
           consumer:
             auto-offset-reset: earliest
             max-attempts: 3
             back-off-initial-interval: 1000
-        processFraudAmount-out-0:
+        processFraudamount-out-0:
           destination: transaction-processed
           group: ${spring.application.name}
           consumer:
