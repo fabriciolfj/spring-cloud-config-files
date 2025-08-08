@@ -42,10 +42,6 @@ spring:
         hoursamount-out-0:
           destination: transaction-processed
           group: ${spring.application.name}
-          consumer:
-            auto-offset-reset: earliest
-            max-attempts: 3
-            back-off-initial-interval: 1000
   flyway:
     locations:
       - db/migration
