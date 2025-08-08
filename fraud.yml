@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
   shutdown: graceful
   tomcat:
     connection-timeout: 2s
@@ -11,7 +11,14 @@ server:
 spring:
   lifecycle:
     timeout-per-shutdown-phase: 15s
+  kafka:
+    bootstrap-servers:
+      - localhot:29092
+      - localhot:29093
+      - localhot:29094
   cloud:
+    function:
+      definition: Hours|Amount
     streams:
       binder:
         transaction:
@@ -21,22 +28,14 @@ spring:
           retries: 1
           acks: all
           processing.guarantee: exactly_once
-  kafka:
-    bootstrap-servers:
-      - localhot:29092
-      - localhot:29093
-      - localhot:29094
-  datasource:
-    username: root
-    password: root
-    url: jdbc:postgresql://localhost:5432/postgres
-    hikari:
-      minimum-idle: 5
-      maximum-pool-size: 15
-      connection-timeout: 2000
-      idle-timeout: 10000
-      validation-timeout: 5000
-      connection-init-sql: "SELECT 1"
+      bindings:
+        processFraudHours-in-0:
+          destination: process-fraud
+          group: ${spring.application.name}
+        processFraudAmount-out-0:
+          destination: transaction-processed
+          group: ${spring.application.name}
+
   flyway:
     locations:
       - db/migration
@@ -53,5 +52,6 @@ management:
 key:
   value: test
 
-topic:
-  process-fraud: process-fraud
+limit:
+  hours: 23
+  amount: 10000
