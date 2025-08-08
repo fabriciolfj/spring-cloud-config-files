@@ -13,9 +13,9 @@ spring:
     timeout-per-shutdown-phase: 15s
   kafka:
     bootstrap-servers:
-      - localhot:29092
-      - localhot:29093
-      - localhot:29094
+      - localhost:29092
+      - localhost:29093
+      - localhost:29094
   cloud:
     function:
       definition: Hours|Amount
