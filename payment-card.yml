@@ -12,15 +12,17 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 15s
   cloud:
-    streams:
-      binder:
-        transaction:
-          transaction-id-prefix: tx-
-        configuration:
-          isolation.level: read_committed
-          retries: 1
-          acks: all
-          processing.guarantee: exactly_once
+    stream:
+      kafka:
+        streams:
+          binder:
+            transaction:
+              transaction-id-prefix: tx-
+            configuration:
+              isolation.level: read_committed
+              retries: 1
+              acks: all
+              processing.guarantee: exactly_once
   kafka:
     bootstrap-servers:
       - localhost:29092
