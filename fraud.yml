@@ -11,7 +11,7 @@ server:
 spring:
   ata:
     mongodb:
-      uri: mongodb://admin:password123@localhost:27017/fraud?authSource=admin
+      uri: mongodb://localhost:27017/fraud
   lifecycle:
     timeout-per-shutdown-phase: 15s
   kafka:
