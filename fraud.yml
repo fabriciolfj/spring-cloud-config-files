@@ -9,7 +9,7 @@ server:
       min-spare: 5
 
 spring:
-  ata:
+  data:
     mongodb:
       uri: mongodb://localhost:27017/fraud
   lifecycle:
@@ -22,7 +22,7 @@ spring:
   cloud:
     function:
       definition: hours|amount
-    streams:
+    stream:
       binder:
         transaction:
           transaction-id-prefix: tx-
@@ -35,6 +35,7 @@ spring:
         hoursamount-in-0:
           destination: process-fraud
           group: ${spring.application.name}
+          content-type: application/json
           consumer:
             auto-offset-reset: earliest
             max-attempts: 3
@@ -42,6 +43,7 @@ spring:
         hoursamount-out-0:
           destination: transaction-processed
           group: ${spring.application.name}
+          content-type: application/json
   flyway:
     locations:
       - db/migration
