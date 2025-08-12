@@ -6,17 +6,9 @@ spring:
           uri: http://localhost:8081/api/v1/payments/
           predicates:
             - Path=/api/v1/payments/**
-            - Method=POST
           filters:
             - StripPrefix=0
 
-        - id: payment-service-all
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/v1/payments/**
-            - Method=GET
-          filters:
-            - StripPrefix=0
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
