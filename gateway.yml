@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 spring:
   cloud:
     gateway:
@@ -32,7 +29,3 @@ spring:
               - PUT
               - DELETE
             allowedHeaders: "*"
-
-logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
