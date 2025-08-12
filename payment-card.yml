@@ -12,11 +12,14 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 15s
   cloud:
+    function:
+      definition: transactionProcessed
     streams:
       bindings:
         transactionProcessed-in-0:
           destination: transaction-processed
           group: ${spring.application.name}
+          content-type: application/json
           consumer:
             auto-offset-reset: earliest
             max-attempts: 3
