@@ -14,7 +14,7 @@ spring:
   cloud:
     function:
       definition: transactionProcessed
-    streams:
+    stream:
       bindings:
         transactionProcessed-in-0:
           destination: transaction-processed
