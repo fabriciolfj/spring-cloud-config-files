@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: payment-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/payments/**
+            - Method=POST
+          filters:
+            - StripPrefix=0
+
+        - id: payment-service-all
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/payments/**
+            - Method=GET
+          filters:
+            - StripPrefix=0
