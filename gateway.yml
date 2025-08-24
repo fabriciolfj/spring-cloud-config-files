@@ -8,6 +8,10 @@ spring:
               uri: http://localhost:8081
               predicates:
                 - Path=/api/v1/payments/**
+            - id: fraud-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/v1/frauds/**
 
         default-filters:
           - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
