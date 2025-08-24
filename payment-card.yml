@@ -68,3 +68,8 @@ key:
 
 topic:
   process-fraud: process-fraud
+
+
+fraud:
+  client:
+    url: http://localhost:8080/api/v1/frauds
